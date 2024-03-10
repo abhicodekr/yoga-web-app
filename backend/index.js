@@ -31,7 +31,14 @@ async function run() {
     const enrolledCollection = database.collection("enrolled");
     const appliedCollection = database.collection("applied");
 
-    // collections routes here
+    // classes routes here
+
+    app.post("/new-class", async (req, res) => {
+      const newClass = req.body;
+      //newClass.awailableSeats = parseInt(newClass.availableSeats);
+      const result = await classesCollection.insertOne(newClass);
+      res.send(result);
+    });
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
