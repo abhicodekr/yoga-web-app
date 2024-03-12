@@ -1,7 +1,12 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 require("dotenv").config();
 const port = process.env.PORT || 5000;
+
+// middleware
+app.use(cors());
+app.use(express.json());
 
 //mongodb connection
 
@@ -53,7 +58,7 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-  res.send("Hello developer ok");
+  res.send("Hello developer done");
 });
 
 app.listen(port, () => {
